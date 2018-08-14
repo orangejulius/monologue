@@ -1,8 +1,8 @@
 # encoding: UTF-8
 require 'spec_helper'
-describe "feed" do
+RSpec.describe "feed" do
   before(:each) do
-    Factory(:post, url: "url/to/post")
+    FactoryBot.build(:post, url: "url/to/post")
   end
 
   # test to prevent regression for issue #72

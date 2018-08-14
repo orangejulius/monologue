@@ -1,4 +1,4 @@
-class CreateTaggings < ActiveRecord::Migration
+class CreateTaggings < ActiveRecord::Migration[5.1]
   def change
     create_table :monologue_taggings do |t|
       t.integer :post_id, :tag_id

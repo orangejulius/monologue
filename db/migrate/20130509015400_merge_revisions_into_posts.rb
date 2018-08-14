@@ -1,4 +1,4 @@
-class MergeRevisionsIntoPosts < ActiveRecord::Migration
+class MergeRevisionsIntoPosts < ActiveRecord::Migration[5.1]
   class Monologue::PostsRevision < ActiveRecord::Base
   end
 
@@ -29,7 +29,7 @@ class MergeRevisionsIntoPosts < ActiveRecord::Migration
   end
 
   def down
-    raise ActiveRecord::IrreversibleMigration
+    raise ActiveRecord::IrreversibleMigration[5.1]
   end
 
   private

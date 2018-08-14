@@ -1,6 +1,6 @@
 # encoding: UTF-8
 require 'spec_helper'
-describe "posts" do
+RSpec.describe "posts" do
   context "logged in user" do
     before(:each) do
       log_in
@@ -12,8 +12,8 @@ describe "posts" do
     end
 
     it "can access post's admin with pagination" do
-      Factory(:post, title: "my first title")
-      Factory(:post, title: "my second title")
+      FactoryBot.build(:post, title: "my first title")
+      FactoryBot.build(:post, title: "my second title")
       Monologue::Config.admin_posts_per_page = 1
       visit admin_posts_page_path page: 1
       page.should have_content "Older Posts"
@@ -30,7 +30,7 @@ describe "posts" do
     end
 
     it "can edit a post and then save the post" do
-      Factory(:post, title: "my title")
+      FactoryBot.build(:post, title: "my title")
       visit admin_posts_path
       click_on "my title"
       page.should have_content "Edit \""
@@ -61,7 +61,7 @@ describe "posts" do
     end
 
     it "can update the tags of an edited post" do
-      Factory(:post, title: "my title")
+      FactoryBot.build(:post, title: "my title")
       visit admin_posts_path
       click_on "my title"
       fill_in "Tags",with: "ruby, spree"
@@ -82,7 +82,7 @@ describe "posts" do
     end
     
     it "can NOT edit posts" do
-      post = Factory(:post)
+      post = FactoryBot.build(:post)
       visit edit_admin_post_path(post)
       page.should have_content "You must first log in"
     end

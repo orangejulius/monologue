@@ -1,4 +1,4 @@
-class MoveUserIdToPost < ActiveRecord::Migration
+class MoveUserIdToPost < ActiveRecord::Migration[5.1]
   class Monologue::PostsRevision < ActiveRecord::Base
   end
 

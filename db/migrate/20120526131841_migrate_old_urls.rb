@@ -1,4 +1,4 @@
-class MigrateOldUrls < ActiveRecord::Migration
+class MigrateOldUrls < ActiveRecord::Migration[5.1]
   class Monologue::PostsRevision < ActiveRecord::Base
   end
 

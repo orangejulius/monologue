@@ -1,39 +1,42 @@
 require 'spec_helper'
 
-describe Monologue::Post do
+RSpec.describe Monologue::Post, type: :model do
   before(:each) do
-    @post = Factory(:post)
+    @post = FactoryBot.create(:post)
   end
 
-  it { validate_presence_of(:user_id) }
+  it "has user_id" do
+    expect(@post.user_id).not_to be_nil
+  end
 
   it "is valid with valid attributes" do
-    @post.should be_valid
+    expect(@post).to be_valid
   end
 
-  it { validate_presence_of(:title) }
-  it { validate_presence_of(:content) }
-  it { validate_presence_of(:published_at) }
+  it { should validate_presence_of(:title) }
+
+  it { should validate_presence_of(:content) }
+  it { should validate_presence_of(:published_at) }
 
   it "should create permalink (url) automatically with title and year if none is provided" do
     title = "this is a great title!!!"
-    post = Factory(:post, url: "", title: title, published_at: "2012-02-02")
-    post.url.should == "2012/this-is-a-great-title"
+    post = FactoryBot.create(:post, url: "", title: title, published_at: "2012-02-02")
+    expect(post.url).to eq("2012/this-is-a-great-title")
   end
 
   it "should not let you create a post with a url starting with a '/'" do
-    expect { Factory(:post, url: "/whatever") }.to raise_error(ActiveRecord::RecordInvalid)
+    expect { FactoryBot.create(:post, url: "/whatever") }.to raise_error(ActiveRecord::RecordInvalid)
   end
 
   it "should validate that URLs are unique to a post" do
-    post_1 = Factory(:post, url: "unique/url")
+    post_1 = FactoryBot.build(:post, url: "unique/url")
     expect { post_1.save }.not_to raise_error()
-    expect { Factory(:post, url: "unique/url") }.to raise_error(ActiveRecord::RecordInvalid)
+    expect { FactoryBot.create(:post, url: "unique/url") }.to raise_error(ActiveRecord::RecordInvalid)
   end
 
 
   it "excludes the current post revision on URL uniqueness validation" do
-    pr = Factory(:post, url: nil, title: "unique title", published_at: DateTime.new(2011))
+    pr = FactoryBot.build(:post, url: nil, title: "unique title", published_at: DateTime.new(2011))
     pr.content = "Something changed"
     pr.save
     pr.url.should == "2011/unique-title"

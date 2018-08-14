@@ -1,4 +1,4 @@
-class DeleteJoinPostsTags < ActiveRecord::Migration
+class DeleteJoinPostsTags < ActiveRecord::Migration[5.1]
   def up
     drop_table :monologue_posts_tags
   end

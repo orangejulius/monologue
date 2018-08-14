@@ -16,9 +16,10 @@ gemspec
 
 group :development, :test do
   gem "thin"
-  gem 'rails', '= 4.2.7'
-  gem 'responders', '~> 2.0'
+  gem 'rails', '~> 5.1.0'
+  gem 'responders', '~> 2.1'
   gem 'pry'
+  gem 'shoulda-matchers'
 
   if RUBY_PLATFORM.downcase.include?("darwin")
     gem 'rb-fsevent'

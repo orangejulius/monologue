@@ -1,5 +1,5 @@
 # encoding: UTF-8
-FactoryGirl.define do
+FactoryBot.define do
   factory :post, class: Monologue::Post do
     published true
     association :user
@@ -16,7 +16,7 @@ FactoryGirl.define do
   end
 
   factory :post_with_tags, class: Monologue::Post, parent: :post do |post|
-    post.after_create { |p| p.tag!(['Rails', 'a great tag', 'Тест'])}
+    after(:create) {|p| p.tag!(['Rails', 'a great tag', 'Тест'])}
   end
 
 end

@@ -1,4 +1,4 @@
-class CreateMonologuePostsRevisions < ActiveRecord::Migration
+class CreateMonologuePostsRevisions < ActiveRecord::Migration[5.1]
   def change
     create_table :monologue_posts_revisions do |t|
       t.string :title

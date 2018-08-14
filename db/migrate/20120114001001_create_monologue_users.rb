@@ -1,4 +1,4 @@
-class CreateMonologueUsers < ActiveRecord::Migration
+class CreateMonologueUsers < ActiveRecord::Migration[5.1]
   def change
     create_table :monologue_users do |t|
       t.string :name

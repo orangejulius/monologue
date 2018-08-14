@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe Monologue::ApplicationHelper do
+RSpec.describe Monologue::ApplicationHelper, type: :helper do
   describe "creating the url for a given tag" do
     before(:each) do
-      @tag= Factory(:tag, name: 'my_tag')
+      @tag= FactoryBot.build(:tag, name: 'my_tag')
     end
 
     it "should return a well formed url for the tag" do

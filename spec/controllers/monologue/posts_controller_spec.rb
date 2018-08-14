@@ -1,16 +1,16 @@
 require 'spec_helper'
 
-describe Monologue::PostsController do
+RSpec.describe Monologue::PostsController, type: :controller do
   before do
     @routes = Monologue::Engine.routes
   end
 
-  describe 'GET #index' do
+  describe 'GET index' do
 
     context "archive_posts" do
       before do
-        archive_post1 = FactoryGirl.create(:post, :published_at => Date.parse('10-10-10'))
-        archive_post2 = FactoryGirl.create(:post, :published_at => Date.parse('11-11-11'))
+        archive_post1 = FactoryBot.create(:post, :published_at => Date.parse('10-10-10'))
+        archive_post2 = FactoryBot.create(:post, :published_at => Date.parse('11-11-11'))
         archive_post2.save(:validate => false)
         get :index
       end

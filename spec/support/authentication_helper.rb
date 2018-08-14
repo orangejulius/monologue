@@ -7,5 +7,5 @@ module MonologueSpecHelper
 end
 
 RSpec.configure do |config|
-  config.include MonologueSpecHelper::AuthenticationMock, type: :controller
+  config.include MonologueSpecHelper::AuthenticationMock
 end

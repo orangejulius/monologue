@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :tag, class: Monologue::Tag do
     name "Rails"
   end

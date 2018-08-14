@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
 
   s.files = Dir["{app,config,db,lib,vendor}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.md", "deprecations.rb"]
 
-  s.add_dependency "rails", "= 4.2.7"
+  s.add_dependency "rails", "~> 5.1.0"
   s.add_dependency "bcrypt", '~> 3.1.7'
   s.add_dependency "coffee-rails",'>= 4.0.0'
   s.add_dependency "truncate_html"
@@ -24,16 +24,19 @@ Gem::Specification.new do |s|
   s.add_dependency "ckeditor",'~> 4.1.1'
   s.add_dependency 'select2-rails', '~> 3.2'
   s.add_dependency "sass-rails",'~> 5.0.0'
-  s.add_dependency "responders", '~> 2.1.0'
+  s.add_dependency "responders", '~> 2.4.0'
 
-  s.add_development_dependency "rspec-rails", "~> 2.8"
-  s.add_development_dependency 'factory_girl_rails', '~> 1.4.0'
-  s.add_development_dependency "capybara", "~> 1.1.4"
+  s.add_development_dependency "rspec-rails", "~> 3.8"
+  s.add_development_dependency 'factory_bot_rails', '~> 4.10.0'
+  s.add_development_dependency "capybara", "~> 3.5.1"
   s.add_development_dependency "capybara-webkit"
   s.add_development_dependency "shoulda"
   s.add_development_dependency "guard-rspec"
   s.add_development_dependency "database_cleaner", "~> 0.9.1"
   s.add_development_dependency "mysql2"
+  s.add_development_dependency "rdoc", "~> 6.0.4"
+  s.add_development_dependency "rails-controller-testing"
+  s.add_development_dependency "shoulda-matchers"
 
   s.add_development_dependency "sqlite3"
 end

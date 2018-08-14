@@ -1,6 +1,7 @@
 # encoding: UTF-8
 require 'spec_helper'
-describe "analytics code snipets" do
+
+RSpec.describe "analytics code snipets" do
   describe "gauge" do
     it "generate gauge snippet if site exists" do
       Monologue::Config.gauge_analytics_site_id = "gauge id here"

@@ -1,7 +1,7 @@
 # encoding: UTF-8
 require 'spec_helper'
-describe "users" do
-  let(:user) { Factory(:user) }
+RSpec.describe "users" do
+  let(:user) { FactoryBot.build(:user) }
 
   before do
     log_in user
@@ -44,8 +44,8 @@ describe "users" do
   end
 
   context "Logged in" do
-    let!(:user_without_post) { Factory(:user) }
-    let!(:user_with_post) { Factory(:user_with_post) }
+    let!(:user_without_post) { FactoryBot.build(:user) }
+    let!(:user_with_post) { FactoryBot.build(:user_with_post) }
 
     it "should be able to see the list of available users" do
       visit admin_users_path

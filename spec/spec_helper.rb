@@ -2,18 +2,24 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../dummy/config/environment", __FILE__)
 require 'rspec/rails'
-require 'rspec/autorun'
 
 require 'capybara/rspec'
 require 'capybara/rails'
 require 'capybara-webkit'
 
-require "factory_girl_rails"
+require "factory_bot_rails"
 require 'database_cleaner'
-require 'shoulda'
+require 'shoulda/matchers'
 
 require 'coveralls'
 Coveralls.wear!
+
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
+  end
+end
 
 
 ENGINE_RAILS_ROOT=File.join(File.dirname(__FILE__), '../')
@@ -21,7 +27,7 @@ ENGINE_RAILS_ROOT=File.join(File.dirname(__FILE__), '../')
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 Dir[File.join(ENGINE_RAILS_ROOT, "spec/support/**/*.rb")].each {|f| require f }
-Dir[File.join(ENGINE_RAILS_ROOT, "spec/factories/**/*.rb")].each {|f| require f}
+#Dir[File.join(ENGINE_RAILS_ROOT, "spec/factories/**/*.rb")].each {|f| require f}
 
 
 Rails.backtrace_cleaner.remove_silencers!
@@ -46,11 +52,12 @@ RSpec.configure do |config|
   # If true, the base class of anonymous controllers will be inferred
   # automatically. This will be the default behavior in future versions of
   # rspec-rails.
-  config.infer_base_class_for_anonymous_controllers = false
+  config.infer_base_class_for_anonymous_controllers = true
 
   config.before(:suite) do
     DatabaseCleaner.strategy = :deletion
     DatabaseCleaner.clean_with(:deletion)
+
   end
 
   config.before(:each) do
@@ -61,4 +68,5 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
+
 end

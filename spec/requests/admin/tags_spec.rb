@@ -1,5 +1,6 @@
 require 'spec_helper'
-describe "tags" do
+
+RSpec.describe "tags" do
   context "creating a post as a logged in user" do
       before(:each) do
         log_in

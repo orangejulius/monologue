@@ -5,7 +5,7 @@ development:
   database: monologue_development
   pool: 5
   username: root
-  password:
+  password: asdfasdf
 
 test:
   adapter: mysql2
@@ -14,4 +14,4 @@ test:
   database: monologue_test
   pool: 5
   username: root
-  password:
+  password: asdfasdf
